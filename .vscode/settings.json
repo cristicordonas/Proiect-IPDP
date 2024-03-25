@@ -56,5 +56,5 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "Proiect Platformer 2D IPDP.sln"
+    "dotnet.defaultSolution": "Proiect-IPDP.sln"
 }
