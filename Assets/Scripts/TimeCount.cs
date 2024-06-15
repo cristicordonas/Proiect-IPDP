@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using Unity.VisualScripting;
+using UnityEditor;
 
 public class TimeCount : MonoBehaviour
 {
@@ -43,12 +44,14 @@ public class TimeCount : MonoBehaviour
         }
         if(Finish.isLevelCompleted)
         {
+            Finish.isLevelCompleted = false;
             PlayerPrefs.SetInt("minutesPassed", minutesPassed);
             PlayerPrefs.SetFloat("secondsCount", secondsCount);
             if (SceneManager.GetActiveScene().buildIndex == 3 && !dbUpdated)
             {
                 dbUpdated = true;
                 dataBase_obj.UpdateLeaderboard(PlayerPrefs.GetString("playerName"), minutesPassed, (int)secondsCount);
+                FileUtil.ReplaceFile(Application.dataPath + "/Leaderboard.db", "../sqlite-leaderboard/Leaderboard.db");
             }
         } 
     }

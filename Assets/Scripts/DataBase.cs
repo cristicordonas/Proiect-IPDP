@@ -7,10 +7,11 @@ using UnityEngine.SceneManagement;
 
 public class DataBase
 {
-    private string dbName = "URI=file:../sqlite-leaderboard/Leaderboard.db";
+    //private string dbName = "URI=file:../sqlite-leaderboard/Leaderboard.db";
+    private string dbName = Application.dataPath + "/Leaderboard.db";
     public void CreateDatabase() 
     {
-        using (var connection = new SqliteConnection(dbName))
+        using (var connection = new SqliteConnection("URI=file:" + dbName))
         {
             connection.Open();
             using (var command = connection.CreateCommand())
@@ -24,7 +25,7 @@ public class DataBase
     }
     public void InsertIntoLeaderboard(string name)
     {
-        using (var connection = new SqliteConnection(dbName))
+        using (var connection = new SqliteConnection("URI=file:" + dbName))
         {
             connection.Open();
             using (var command = connection.CreateCommand())
@@ -39,7 +40,7 @@ public class DataBase
     public string ReadFromLeaderboard()
     {
         string text = "";
-        using (var connection = new SqliteConnection(dbName))
+        using (var connection = new SqliteConnection("URI=file:" + dbName))
         {
             connection.Open();
             using (var command = connection.CreateCommand())
@@ -65,7 +66,7 @@ public class DataBase
     }
     public void UpdateLeaderboard(string name, int minutes, int seconds)
     {
-        using (var connection = new SqliteConnection(dbName))
+        using (var connection = new SqliteConnection("URI=file:" + dbName))
         {
             connection.Open();
             using (var command = connection.CreateCommand())
@@ -80,7 +81,7 @@ public class DataBase
 
     public void DeleteFromLeaderboard()
     {
-        using (var connection = new SqliteConnection(dbName))
+        using (var connection = new SqliteConnection("URI=file:" + dbName))
         {
             connection.Open();
             using (var command = connection.CreateCommand())

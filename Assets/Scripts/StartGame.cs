@@ -1,10 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
-using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEditor;
 
 public class StartGame : MonoBehaviour
 {
@@ -20,8 +20,9 @@ public class StartGame : MonoBehaviour
         {
             PlayerPrefs.SetString("playerName", playerName.text);
             dataBase_obj.CreateDatabase();
-            dataBase_obj.DeleteFromLeaderboard();
+            //dataBase_obj.DeleteFromLeaderboard();
             dataBase_obj.InsertIntoLeaderboard(playerName.text);
+            FileUtil.ReplaceFile(Application.dataPath + "/Leaderboard.db", "../sqlite-leaderboard/Leaderboard.db");
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
     }

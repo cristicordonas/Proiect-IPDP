@@ -56,5 +56,5 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "Proiect-IPDP.sln"
+    "dotnet.defaultSolution": "Proiect-IPDP-2.sln"
 }
